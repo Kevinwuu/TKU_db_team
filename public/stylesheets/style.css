@@ -6,3 +6,9 @@ body {
 a {
     color: #00B7FF;
 }
+
+nav .navbar-nav li:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    /* background-color: red; */
+}
