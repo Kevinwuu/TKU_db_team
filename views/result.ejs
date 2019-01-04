@@ -16,42 +16,41 @@
 <body>
     <% include navbar.ejs %>
         <div class="container">
-            <div class="contain my-4">
-                <h1>
-                    報名結果
-                </h1>
-
+            <div class="contain my-5">
+                <table class="table table-hover">
+                    <h1>
+                        報名結果
+                    </h1><br>
+                    <thead>
+                        <tr class="table-success">
+                            <th scope="col">#</th>
+                            <th scope="col">學校</th>
+                            <th scope="col">系所</th>
+                            <th scope="col">H</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fattt</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <table class="table table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">學校</th>
-                        <th scope="col">系所</th>
-                        <th scope="col">H</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fattt</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
 </body>
 

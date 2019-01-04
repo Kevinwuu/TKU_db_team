@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-const resultController = require('../controllers/result');
+const signupController = require('../controllers/signup');
 
 /* GET home page. */
-router.get('/', resultController.getResults);
+router.get('/', signupController.getData);
 
 // router.get('/edit', postController.getEditPost);
 
