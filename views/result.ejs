@@ -9,18 +9,47 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <title>
-        排球盃線上報名系統
+        <%= title %>
     </title>
 </head>
 
 <body>
     <% include navbar.ejs %>
         <div class="container">
-            <div class="contain my-2">
-                <h1>
-                    hello
-                </h1>
-
+            <div class="contain my-5">
+                <table class="table table-hover">
+                    <h1>
+                        報名結果
+                    </h1><br>
+                    <thead>
+                        <tr class="table-success">
+                            <th scope="col">#</th>
+                            <th scope="col">學校</th>
+                            <th scope="col">系所</th>
+                            <th scope="col">H</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fattt</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 </body>
