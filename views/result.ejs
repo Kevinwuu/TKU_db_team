@@ -11,16 +11,41 @@
     <title>
         <%= title %>
     </title>
+    <style>
+        .header .search-area {
+            display: inline;
+        }
+        /* 去除number型態的箭頭 */
+        
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body>
     <% include navbar.ejs %>
         <div class="container">
-            <div class="contain my-5">
+            <div class="header my-5">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h1>
+                            報名結果
+                        </h1>
+                    </div>
+
+                    <div class="search-area col-lg-4">
+                        <label for="">查詢</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        <button class="btn btn btn-primary">查詢</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="result-area">
                 <table class="table table-hover">
-                    <h1>
-                        報名結果
-                    </h1><br>
                     <thead>
                         <tr class="table-success">
                             <th scope="col">#</th>
