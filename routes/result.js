@@ -6,6 +6,9 @@ const resultController = require('../controllers/result');
 /* GET home page. */
 router.get('/', resultController.getResults);
 
+router.get('/search', resultController.getSearch);
+
+
 // router.get('/edit', postController.getEditPost);
 
 // router.post('/add', postController.postAddPost);

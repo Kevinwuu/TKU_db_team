@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `team_member`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `team_member` (
   `t_id` int(11) NOT NULL,
   `m_id` int(11) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE `team_member` (
   KEY `m_id_idx` (`m_id`),
   CONSTRAINT `m_id` FOREIGN KEY (`m_id`) REFERENCES `member` (`m_id`),
   CONSTRAINT `t_id` FOREIGN KEY (`t_id`) REFERENCES `team` (`t_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

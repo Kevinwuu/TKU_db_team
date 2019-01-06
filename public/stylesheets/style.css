@@ -1,6 +1,7 @@
 body {
     /* padding: 50px; */
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding-top: 56px;
 }
 
 a {
@@ -11,6 +12,13 @@ nav .navbar-nav li:hover {
     cursor: pointer;
     opacity: 0.5;
     /* background-color: red; */
+}
+
+
+/* 去掉input[type=number]默認的加減號*/
+
+input[type='number'] {
+    -moz-appearance: textfield;
 }
 
 input[type=number]::-webkit-inner-spin-button,

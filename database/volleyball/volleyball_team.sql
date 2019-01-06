@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `team`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `team` (
   `t_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `team` (
   KEY `m_id_idx` (`t_m_id`),
   CONSTRAINT `t_m_id` FOREIGN KEY (`t_m_id`) REFERENCES `major` (`m_id`),
   CONSTRAINT `t_s_id` FOREIGN KEY (`t_s_id`) REFERENCES `school` (`s_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
