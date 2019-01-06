@@ -67,7 +67,7 @@ CREATE TABLE `member` (
   CONSTRAINT `major_id` FOREIGN KEY (`major_id`) REFERENCES `major` (`m_id`) ON UPDATE CASCADE,
   CONSTRAINT `school_id` FOREIGN KEY (`school_id`) REFERENCES `school` (`s_id`) ON UPDATE CASCADE,
   CONSTRAINT `team_id` FOREIGN KEY (`team_id`) REFERENCES `team` (`t_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,6 +76,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
+INSERT INTO `member` VALUES (1,'黃義豐','男','s123456771','1995-10-26',15,26,403411787,912345671,'abc8038570@gamil.com',1),(2,'吳子搴','男','s123456772','1995-02-02',15,26,405417048,937903160,'0912345672@gamil.com',1),(3,'吳宜真','女','s123456773','1995-10-21',15,26,404411877,970421299,'0912345673@gamil.com',1),(4,'黃七四','男','s123456774','1995-10-26',15,4,405411874,912345674,'0912345674@gamil.com',1),(5,'洪七五','男','s123456775','1995-10-26',15,4,404411875,912345675,'0912345675@gamil.com',1),(6,'陳七六','男','s123456776','1995-10-26',15,4,404411876,912345676,'0912345676@gamil.com',1),(7,'林七七','男','s123456777','1995-10-26',15,32,405411877,912345677,'0912345677@gamil.com',1),(8,'王七八','男','s123456778','1995-10-26',15,32,404411878,912345678,'0912345678@gamil.com',1),(9,'龍七九','男','s123456779','1995-10-26',15,32,404411879,912345679,'0912345679@gamil.com',1),(10,'森七十','男','s123456770','1995-10-26',1,26,404411870,912345670,'0912345670@gamil.com',1),(11,'柯八一','男','s123456781','1995-10-26',1,26,404411881,912345681,'0912345681@gamil.com',1),(12,'謝八二','男','s123456782','1995-10-26',1,4,404411882,912345682,'0912345682@gamil.com',1),(13,'呂八三','男','s123456783','1995-10-26',1,4,404411883,912345683,'0912345683@gamil.com',1);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,7 +114,6 @@ DROP TABLE IF EXISTS `team`;
 CREATE TABLE `team` (
   `t_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `number` int(11) NOT NULL,
   `state` varchar(45) NOT NULL,
   `pay` varchar(45) NOT NULL,
   `t_s_id` int(11) DEFAULT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE `team` (
   KEY `m_id_idx` (`t_m_id`),
   CONSTRAINT `t_m_id` FOREIGN KEY (`t_m_id`) REFERENCES `major` (`m_id`),
   CONSTRAINT `t_s_id` FOREIGN KEY (`t_s_id`) REFERENCES `school` (`s_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,6 +132,7 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
+INSERT INTO `team` VALUES (1,'資工工學院聯隊','報名完成','已付款',15,26),(2,'資工女排','報名人填寫中','未付款',15,26),(3,'台大工學院聯隊','報名人填寫中','已付款',1,26);
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,6 +159,7 @@ CREATE TABLE `team_member` (
 
 LOCK TABLES `team_member` WRITE;
 /*!40000 ALTER TABLE `team_member` DISABLE KEYS */;
+INSERT INTO `team_member` VALUES (1,1),(1,2),(2,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(3,10),(3,11),(3,12),(3,13);
 /*!40000 ALTER TABLE `team_member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -170,4 +172,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-04 22:42:34
+-- Dump completed on 2019-01-06 22:20:50
