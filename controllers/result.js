@@ -8,9 +8,9 @@ const Result = require('../models/result');
 exports.getResults = (req, res, next) => {
     Result.fetchAll()
         .then(([rows]) => {
-            // for (let p of rows) {
-            //     p.date = moment(p.date).format('MMM D, YYYY');
-            // }
+            for (let p of rows) {
+                p.date = moment(p.date).format('MMM D, YYYY');
+            }
             console.log(JSON.stringify(rows));
             //res.send(JSON.stringify(rows));
             res.render('result', {

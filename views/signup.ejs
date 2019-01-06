@@ -11,74 +11,90 @@
     <title>
         <%= title %>
     </title>
+    <style>
+        .content .input-area {
+            margin: 20px 20%;
+        }
+        
+        .header {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
     <% include navbar.ejs %>
         <div class="container">
-            <div class="content my-4 mx-4">
+            <div class="content mt-4 px-10">
                 <div class="header ">
                     <h2>
                         隊員資料
                     </h2>
-                </div><br>
-                <div class="input-area mx-6 p-6">
+                </div>
+                <div class="input-area p-6">
                     <form>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">姓名</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="王阿明">
+                            <input type="text" class="form-control" placeholder="王阿明">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">性別</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>男</option>
-                                <option>女</option>
-                            </select>
+                            <select class="form-control">
+                            <option>男</option>
+                            <option>女</option>
+                        </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">身分證字號</label>
-                            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="F123456789">
+                            <input type="password" maxlength="10" class="form-control" placeholder="F123456789">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">生日</label>
-                            <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="date" class="form-control" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">學校</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>淡江大學</option>
-                                <option>台灣大學</option>
-                                <option>清華大學</option>
-                                <option>交通大學</option>
-                            </select>
+                            <select class="form-control">
+                            <option>淡江大學</option>
+                            <option>台灣大學</option>
+                            <option>清華大學</option>
+                            <option>交通大學</option>
+                        </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">系所</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>資工系</option>
-                                <option>資管系</option>
-                                <option>資圖系</option>
-                                <option>資傳系</option>
-                            </select>
+                            <select class="form-control" id="">
+                            <option>資工系</option>
+                            <option>資管系</option>
+                            <option>資圖系</option>
+                            <option>資傳系</option>
+                        </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">學號</label>
-                            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="405417048">
+                            <input type="tel" class="form-control" id="" placeholder="405417048">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Phone</label>
-                            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="0912345678">
+                            <label for="exampleFormControlInput1">連絡電話</label>
+                            <input type="tel" maxlength="10" class="form-control" placeholder="0912345678">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Email</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                            <label for="exampleFormControlInput1">信箱</label>
+                            <input type="email" class="form-control" placeholder="name@example.com">
                         </div>
-                        <button class="btn btn btn-success" type="submit">確認送出</button>
+                        <div align="center">
+                            <button class="btn btn btn-success" onclick="Add()">確認送出</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
 
 </body>
+<script>
+    function Add() {
+        confirm("確認資料無誤，即將送出!")
+    }
+</script>
 
 </html>

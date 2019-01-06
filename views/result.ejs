@@ -11,18 +11,6 @@
     <title>
         <%= title %>
     </title>
-    <style>
-        .header .search-area {
-            display: inline;
-        }
-        /* 去除number型態的箭頭 */
-        
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-    </style>
 </head>
 
 <body>
@@ -35,10 +23,21 @@
                             報名結果
                         </h1>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="input-group search-area col-lg-4">
+                        <label for="exampleFormControlSelect1">選擇比賽</label>
+                        <select class="form-control">
+                        <option>大資盃</option>
+                        <option>小資盃</option>
+                        <option>全國盃</option>
+                        <option>資資盃</option>
 
-                    <div class="search-area col-lg-4">
-                        <label for="">查詢</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                    </select>
+                    </div>
+                    <div class="input-group search-area col-lg-4">
+                        隊伍名稱:
+                        <input type="text" class="form-control" id="" placeholder="">
                         <button class="btn btn btn-primary">查詢</button>
                     </div>
                 </div>
@@ -48,31 +47,40 @@
                 <table class="table table-hover">
                     <thead>
                         <tr class="table-success">
-                            <th scope="col">#</th>
-                            <th scope="col">學校</th>
-                            <th scope="col">系所</th>
-                            <th scope="col">H</th>
+                            <th scope="col" class="align-middle">編號</th>
+                            <th scope="col" class="align-middle">隊名</th>
+                            <th scope="col" class="align-middle">學校</th>
+                            <th scope="col" class="align-middle">系所</th>
+                            <th scope="col" class="align-middle">報名狀態</th>
+                            <th scope="col" class="align-middle"></th>
+
+
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fattt</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        <% for ( var i = 0 ; i < data.length ; i++){ %>
+                            <tr>
+                                <td class="align-middle">
+                                    <%= data[i].id  %>
+                                </td>
+                                <td class="align-middle">
+                                    <%= data[i].title  %>
+                                </td>
+                                <td class="align-middle">
+                                    <%= data[i].title  %>
+                                </td>
+                                <td class="align-middle">
+                                    <%= data[i].category  %>
+                                </td>
+                                <td class="align-middle">
+                                    <%= data[i].date  %>
+                                </td>
+                                <td class="align-middle">
+                                    <input type="button" name="edit" value="Edit" class="btn btn-outline-success btn-sm" onclick="" />
+                                    <input type="button" name="delete" value="Del" class="btn btn-outline-danger btn-sm" onclick="" />
+                                </td>
+                            </tr>
+                            <% } %>
                     </tbody>
                 </table>
             </div>
