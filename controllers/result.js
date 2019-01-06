@@ -8,10 +8,26 @@ const Result = require('../models/result');
 exports.getResults = (req, res, next) => {
     Result.fetchAll()
         .then(([rows]) => {
-            for (let p of rows) {
-                p.date = moment(p.date).format('MMM D, YYYY');
-            }
-            console.log(JSON.stringify(rows));
+            // for (let p of rows) {
+            //     p.date = moment(p.date).format('MMM D, YYYY');
+            // }
+            // console.log(JSON.stringify(rows));
+            //res.send(JSON.stringify(rows));
+            res.render('result', {
+                data: rows,
+                title: '排球盃線上報名系統',
+            });
+        })
+        .catch(err => console.log(err));
+};
+
+exports.getSearch = (req, res, next) => {
+    Result.findById(req.query.name)
+        .then(([rows]) => {
+            // for (let p of rows) {
+            //     p.date = moment(p.date).format('MMM D, YYYY');
+            // }
+            // console.log(JSON.stringify(rows));
             //res.send(JSON.stringify(rows));
             res.render('result', {
                 data: rows,

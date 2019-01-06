@@ -19,12 +19,12 @@ module.exports = class Post {
 
     // READ
     static fetchAll() {
-        return db.execute('SELECT * FROM post');
+        return db.execute('SELECT * FROM team');
     }
 
-    // static findById(id) {
-    //     return db.execute('SELECT * FROM post where id = ?', [id]);
-    // }
+    static findById(name) {
+        return db.execute('SELECT * FROM team where name = ?', [name]);
+    }
 
     // // UPDATE
     // static updateById(req, res) {
