@@ -5,8 +5,10 @@ const resultController = require('../controllers/result');
 
 /* GET home page. */
 router.get('/', resultController.getResults);
-
+router.post('/', resultController.postResults);
 router.get('/search', resultController.getSearch);
+router.get('/detail', resultController.getDetail);
+router.post('/detail', resultController.postMember);
 
 
 // router.get('/edit', postController.getEditPost);

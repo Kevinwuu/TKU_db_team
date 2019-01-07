@@ -8,10 +8,15 @@ a {
     color: #00B7FF;
 }
 
+nav .navbar-nav li {
+    transition: 0.3s;
+}
+
 nav .navbar-nav li:hover {
     cursor: pointer;
     opacity: 0.5;
-    /* background-color: red; */
+    /* color: red; */
+    background-color: rgb(223, 217, 217);
 }
 
 

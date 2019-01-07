@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include header.ejs %>
+        <style>
+            .content .input-area {
+                margin: 20px 25%;
+            }
+            
+            .header {
+                text-align: center;
+            }
+        </style>
+        <script>
+            $('document').ready(function() {
+                $('#addBtn').click(function() {
+                    $('#team-area').append(
+                        '<label for="name">隊員</label>' +
+                        '<div class="input-group">' +
+                        '<input type="text" value="" name="name" class="form-control" placeholder="">' +
+                        '<span class=" input-group-btn">' +
+                        '<button class="btn btn-danger">刪除</button>' +
+                        '</span>' +
+                        '</div>');
+                });
+            });
+
+            function back() {
+                // window.location.href = "/result";
+                history.back(-1);
+            }
+        </script>
+
+</head>
+
+<body>
+    <% include navbar.ejs %>
+
+        <div class="container">
+            <div class="content mt-4 px-10">
+
+                <div class="header">
+                    <h1>隊員清單</h1>
+                    <button class="btn btn btn-secondary" id="backBtn" onclick="back()">返回</button>
+                    <button class="btn btn btn-primary" id="addBtn">新增</button>
+                </div>
+
+                <div class="input-area p-6">
+                    <form id="team-area" action="/result" method="POST">
+                        <% for ( var i = 0 ; i < data.length ; i++){ %>
+
+                            <label for="name">隊員
+                        <%= i+1 %></label>
+                            <div class="input-group pb-2">
+                                <input type="text" value="<%= data[i].name %>" name="name" class="form-control mx-2" placeholder="" readonly disabled>
+                                <span class=" input-group-btn">
+                            <button class="btn btn-danger">刪除</button>
+                        </span>
+                            </div>
+                            <% } %>
+                    </form><br>
+                    <button class="btn btn btn-success">確認送出</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+</body>
+
+
+</html>

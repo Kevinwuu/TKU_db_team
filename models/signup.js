@@ -10,15 +10,22 @@ module.exports = class Post {
     }
 
     // CREATE
-    // static add(req, res) {
-    //     //console.log('add():', req.body.name, req.body.price);
-    //     return db.execute(
-    //         'INSERT INTO post (title, category, date, article) VALUES (?, ?, ?, ?)', [req.body.title, req.body.category, req.body.date, req.body.editor1]
-    //     );
-    // }
-
-    // READ
-    static fetchAll() {
-        return db.execute('SELECT * FROM post');
+    static addMember(req, res) {
+        return db.execute(
+            'INSERT INTO member (name, gender, id, birthday, school_id, major_id,student_id, tel, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', [req.body.name, req.body.gender, req.body.id, req.body.birthday, req.body.school_id, req.body.major_id, req.body.student_id, req.body.tel, req.body.email]
+        );
     }
+
+    // READ school
+    static fetchSchool() {
+        return db.execute('SELECT * FROM school');
+    }
+
+    // READ major
+    static fetchMajor() {
+        return db.execute('SELECT * FROM major');
+    }
+
+
+
 };

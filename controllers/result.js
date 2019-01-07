@@ -3,39 +3,76 @@ const moment = require('moment');
 const Result = require('../models/result');
 
 
-/* READ *****************************/
 
-exports.getResults = (req, res, next) => {
-    Result.fetchAll()
+// 讀取全部隊伍
+exports.getResults = async(req, res, next) => {
+
+    let result;
+    let member;
+    const getResult = await Result.fetchAll()
         .then(([rows]) => {
-            // for (let p of rows) {
-            //     p.date = moment(p.date).format('MMM D, YYYY');
-            // }
             // console.log(JSON.stringify(rows));
-            //res.send(JSON.stringify(rows));
-            res.render('result', {
-                data: rows,
-                title: '排球盃線上報名系統',
-            });
+            result = rows;
         })
         .catch(err => console.log(err));
+    // const getMember = await Result.fetchName(req.query.id)
+    //     .then(([rows]) => {
+    //         member = rows;
+    //     })
+    //     .catch(err => console.log(err));
+
+    res.render('result', {
+        data: result,
+        // member: member,
+        title: '排球盃線上報名系統'
+    });
 };
 
+// 搜尋隊伍資料
 exports.getSearch = (req, res, next) => {
     Result.findById(req.query.name)
         .then(([rows]) => {
-            // for (let p of rows) {
-            //     p.date = moment(p.date).format('MMM D, YYYY');
-            // }
-            // console.log(JSON.stringify(rows));
-            //res.send(JSON.stringify(rows));
             res.render('result', {
                 data: rows,
-                title: '排球盃線上報名系統',
+                title: '排球盃線上報名系統'
             });
         })
         .catch(err => console.log(err));
 };
+
+// 新增隊伍名稱
+exports.postResults = (req, res, next) => {
+    Result.addTeam(req)
+        .then(([rows]) => {
+            res.redirect('/result');
+        })
+        .catch(err => console.log(err));
+};
+
+// 前往detail頁面
+exports.getDetail = (req, res, next) => {
+    Result.fetchDetail(req.query.t_id)
+        .then(([rows]) => {
+            res.render('detail', {
+                data: rows,
+                title: '排球盃線上報名系統'
+            });
+        })
+        .catch(err => console.log(err));
+};
+
+//新增隊員資料
+exports.postMember = (req, res, next) => {
+    Result.addMember(req.query.t_id)
+        .then(([rows]) => {
+            res.render('result', {
+                data: rows,
+                title: '排球盃線上報名系統'
+            });
+        })
+        .catch(err => console.log(err));
+};
+
 
 // exports.getEditResult = async (req, res, next) => {
 
