@@ -50,15 +50,29 @@ exports.postResults = (req, res, next) => {
 };
 
 // 前往detail頁面
-exports.getDetail = (req, res, next) => {
-    Result.fetchDetail(req.query.t_id)
+exports.getDetail = async(req, res, next) => {
+    let member;
+    let cb_data;
+
+    const getMember = await Result.fetchDetail(req.query.t_id)
         .then(([rows]) => {
-            res.render('detail', {
-                data: rows,
-                title: '排球盃線上報名系統'
-            });
+            member = rows;
         })
         .catch(err => console.log(err));
+
+    //拿到所有為參加任何隊伍的會員,放入下拉選單
+    const getCombo = await Result.fetchCombo()
+        .then(([rows]) => {
+            cb_data = rows;
+        })
+        .catch(err => console.log(err));
+
+
+    res.render('detail', {
+        data: member,
+        cb_data: cb_data,
+        title: '排球盃線上報名系統'
+    });
 };
 
 //新增隊員資料

@@ -7,18 +7,26 @@
             .content .input-area {
                 margin: 20px 25%;
             }
-            
+
             .header {
                 text-align: center;
             }
         </style>
         <script>
             $('document').ready(function() {
-                $('#addBtn').click(function() {
+                $('#addBtn').onclick(function() {
                     $('#team-area').append(
                         '<label for="name">隊員</label>' +
                         '<div class="input-group">' +
-                        '<input type="text" value="" name="name" class="form-control" placeholder="">' +
+                        '<select name="new_member" class="form-control mx-2">' +
+                        '<% for ( var i = 0 ; i < cb_data.length ; i++){ var selected = ( i == 0 ) ? "selected" : ""; %>' +
+                        '<option value="<%= cb_data[i].m_id %>" <%=selected %>>' +
+                        '<%= cb_data[i].name %>' +
+                        '</option>' +
+                        '<% } %>' +
+                        // '<option>男</option>' +
+                        // '<option>女</option>' +
+                        '</select>' +
                         '<span class=" input-group-btn">' +
                         '<button class="btn btn-danger">刪除</button>' +
                         '</span>' +
@@ -29,6 +37,15 @@
             function back() {
                 // window.location.href = "/result";
                 history.back(-1);
+            }
+
+            function del(m_id) {
+                confirm("確定刪除隊員編號" + m_id + "?");
+                // window.location.href = "/result/detail?t_id=" + m_id;
+            }
+
+            function update() {
+                confirm("已更新隊員名單!");
             }
         </script>
 
@@ -47,7 +64,7 @@
                 </div>
 
                 <div class="input-area p-6">
-                    <form id="team-area" action="/result" method="POST">
+                    <form id="team-area" action="/result" method="GET">
                         <% for ( var i = 0 ; i < data.length ; i++){ %>
 
                             <label for="name">隊員
@@ -55,12 +72,12 @@
                             <div class="input-group pb-2">
                                 <input type="text" value="<%= data[i].name %>" name="name" class="form-control mx-2" placeholder="" readonly disabled>
                                 <span class=" input-group-btn">
-                            <button class="btn btn-danger">刪除</button>
+                            <button class="btn btn-danger" onclick="del('<%= data[i].m_id %>')">刪除</button>
                         </span>
                             </div>
                             <% } %>
                     </form><br>
-                    <button class="btn btn btn-success">確認送出</button>
+                    <button class="btn btn btn-success" onclick="update()">確認送出</button>
                 </div>
             </div>
         </div>

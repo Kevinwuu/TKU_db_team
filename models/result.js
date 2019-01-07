@@ -23,12 +23,16 @@ module.exports = class Post {
     }
 
     static fetchDetail(id) {
-        return db.execute('select m.name from volleyball.member m join team_member tm on tm.m_id = m.m_id where t_id = ? ', [id]);
+        return db.execute('select m.name,m.m_id from volleyball.member m join team_member tm on tm.m_id = m.m_id where t_id = ? ', [id]);
     }
     static addMember(req) {
         return db.execute('UPDATE member SET ', [req.body.name]);
     }
 
+
+    static fetchCombo() {
+        return db.execute('select name,m_id from volleyball.member m where m_id not in (select m_id from volleyball.team_member)');
+    }
 
 
     // // UPDATE
