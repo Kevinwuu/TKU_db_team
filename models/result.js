@@ -9,22 +9,27 @@ module.exports = class Post {
         this.article = article;
     }
 
-    // CREATE
-    // static add(req, res) {
-    //     //console.log('add():', req.body.name, req.body.price);
-    //     return db.execute(
-    //         'INSERT INTO post (title, category, date, article) VALUES (?, ?, ?, ?)', [req.body.title, req.body.category, req.body.date, req.body.editor1]
-    //     );
-    // }
-
-    // READ
+    //
     static fetchAll() {
-        return db.execute('SELECT * FROM team');
+        return db.execute('select t.t_id,t.name,t.state,t.pay,count(tm.t_id) as number from volleyball.team t left join volleyball.team_member tm ON t.t_id = tm.t_id group by t.t_id');
     }
 
     static findById(name) {
         return db.execute('SELECT * FROM team where name = ?', [name]);
     }
+
+    static addTeam(req) {
+        return db.execute('INSERT INTO team(name) VALUES(?)', [req.body.name]);
+    }
+
+    static fetchDetail(id) {
+        return db.execute('select m.name from volleyball.member m join team_member tm on tm.m_id = m.m_id where t_id = ? ', [id]);
+    }
+    static addMember(req) {
+        return db.execute('UPDATE member SET ', [req.body.name]);
+    }
+
+
 
     // // UPDATE
     // static updateById(req, res) {

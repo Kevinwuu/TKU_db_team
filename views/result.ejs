@@ -22,10 +22,17 @@
             }
 
             function search() {
-
                 var sID = document.getElementById('sID').value;
-                alert(sID);
+
                 window.location.href = "/result/search?name=" + sID;
+            }
+
+            function addTeam() {
+                document.getElementById('team-area').submit();
+            }
+
+            function showDetail(id) {
+                window.location.href = "/result/detail?t_id=" + id;
             }
         </script>
 </head>
@@ -37,14 +44,14 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <h1 id="result-title">
-                            報名結果
+                            大資盃報名結果
                         </h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-group search-area col-lg-4">
                         <label for="exampleFormControlSelect1">選擇比賽</label>
-                        <select class="form-control" id="gameList" onchange="displayGame()">
+                        <select class="form-control mx-2" id="gameList" onchange="displayGame()">
                         <option>大資盃</option>
                         <option>小資盃</option>
                         <option>全國盃</option>
@@ -54,8 +61,11 @@
                     </div>
                     <div class="input-group search-area col-lg-4">
                         <label for="exampleFormControlSelect2">隊伍名稱</label>
-                        <input type="text" class="form-control" name="sid" id="sID" placeholder="">
+                        <input type="text" class="form-control mx-2" name="sid" id="sID" placeholder="">
                         <button class="btn btn btn-primary" onclick="search()">查詢</button>
+                    </div>
+                    <div class="input-group search-area col-lg-4">
+                        <button type="button" class="btn btn btn-warning" data-toggle="modal" data-target="#addModal">Add</button>
                     </div>
                 </div>
             </div>
@@ -66,7 +76,7 @@
                             <th scope="col" class="align-middle">編號</th>
                             <th scope="col" class="align-middle">隊名</th>
                             <th scope="col" class="align-middle">人數</th>
-                            <th scope="col" class="align-middle">報名狀泰</th>
+                            <th scope="col" class="align-middle">報名狀態</th>
                             <th scope="col" class="align-middle">繳費狀態</th>
                             <th scope="col" class="align-middle"></th>
 
@@ -92,11 +102,11 @@
                                     <%= data[i].pay  %>
                                 </td>
                                 <td class="align-middle">
-                                    <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal">Detail
+                                    <button class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="showDetail('<%= data[i].t_id  %>')">Detail
                             </button>
-                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="del()">
+                                    <!-- <button type="button" class="btn btn-outline-danger btn-sm" onclick="del()">
                                 Delete
-                            </button>
+                            </button> -->
                                 </td>
                             </tr>
                             <% } %>
@@ -108,26 +118,34 @@
 
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Add Modal -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">隊伍資訊</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
+
                     <div class="modal-body">
-                        ...
+                        <form id="team-area" action="/result" method="POST">
+                            <div class="form-group">
+                                <label for="name">隊名</label>
+                                <input type="text" name="name" class="form-control" placeholder="">
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" onclick="addTeam()" class="btn btn-primary">Done</button>
                     </div>
                 </div>
             </div>
         </div>
+
+
 </body>
 
 

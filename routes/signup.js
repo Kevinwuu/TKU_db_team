@@ -5,10 +5,10 @@ const signupController = require('../controllers/signup');
 
 /* GET home page. */
 router.get('/', signupController.getData);
+router.post('/', signupController.postAddMember);
 
 // router.get('/edit', postController.getEditPost);
 
-// router.post('/add', postController.postAddPost);
 
 // router.post('/update', postController.postUpdatePost);
 
