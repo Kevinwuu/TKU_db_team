@@ -17,8 +17,10 @@
                 document.getElementById("result-title").innerHTML = text + "報名結果";
             }
 
-            function del() {
-                confirm("確定刪除本筆資料嗎?");
+            function del(t_id) {
+                confirm("確定刪除本筆資料嗎?\n" + "t_id=" + t_id);
+                window.location.href = "/result/delete?t_id=" + t_id;
+
             }
 
             function search() {
@@ -104,9 +106,9 @@
                                 <td class="align-middle">
                                     <button class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="showDetail('<%= data[i].t_id  %>')">Detail
                             </button>
-                                    <!-- <button type="button" class="btn btn-outline-danger btn-sm" onclick="del()">
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="del('<%= data[i].t_id %>')">
                                 Delete
-                            </button> -->
+                            </button>
                                 </td>
                             </tr>
                             <% } %>

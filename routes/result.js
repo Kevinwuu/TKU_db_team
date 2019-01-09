@@ -8,7 +8,9 @@ router.get('/', resultController.getResults);
 router.post('/', resultController.postResults);
 router.get('/search', resultController.getSearch);
 router.get('/detail', resultController.getDetail);
-router.post('/detail', resultController.postMember);
+// router.post('/detail', resultController.postMember);
+router.get('/delete', resultController.delTeam);
+router.get('/detail/delete', resultController.delMember);
 
 
 // router.get('/edit', postController.getEditPost);
