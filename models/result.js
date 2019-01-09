@@ -33,6 +33,14 @@ module.exports = class Post {
     static fetchCombo() {
         return db.execute('select name,m_id from volleyball.member m where m_id not in (select m_id from volleyball.team_member)');
     }
+    static delMember(m_id) {
+        return db.execute('DELETE FROM volleyball.team_member where m_id= ?', [m_id]);
+    }
+
+    static delTeam(t_id) {
+        return db.execute('DELETE FROM volleyball.team where t_id= ?', [t_id]);
+    }
+
 
 
     // // UPDATE

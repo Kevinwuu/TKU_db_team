@@ -63,6 +63,7 @@ exports.getDetail = async(req, res, next) => {
     //拿到所有為參加任何隊伍的會員,放入下拉選單
     const getCombo = await Result.fetchCombo()
         .then(([rows]) => {
+            console.log(rows);
             cb_data = rows;
         })
         .catch(err => console.log(err));
@@ -83,6 +84,22 @@ exports.postMember = (req, res, next) => {
                 data: rows,
                 title: '排球盃線上報名系統'
             });
+        })
+        .catch(err => console.log(err));
+};
+
+exports.delMember = (req, res, next) => {
+    Result.delMember(req.query.m_id)
+        .then(([rows]) => {
+            res.redirect('/result');
+        })
+        .catch(err => console.log(err));
+};
+
+exports.delTeam = (req, res, next) => {
+    Result.delTeam(req.query.t_id)
+        .then(([rows]) => {
+            res.redirect('/result');
         })
         .catch(err => console.log(err));
 };
