@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include header.ejs %>
+        <style>
+            .owl-carousel .owl-nav {
+                top: 50%;
+                width: 100%;
+                font-size: 40px;
+                left: 20px;
+                position: absolute;
+                color: #fff;
+                text-align: center;
+                transform: translate(-50%);
+            }
+            
+            .owl-item {
+                height: 520px;
+                width: 60%;
+            }
+            
+            .owl-carousel .owl-nav .owl-next {
+                border: 1px solid #fff;
+                position: absolute;
+                left: auto;
+                right: 20px;
+            }
+        </style>
+
+</head>
+
+<body>
+    <% include navbar.ejs %>
+        <div class="owl-carousel owl-theme">
+            <div class="item">
+                <img src="images/01.jpg" class="img-responsive">
+            </div>
+            <div class="item">
+                <img src="images/02.jpg" class="img-responsive">
+            </div>
+            <div class="item">
+                <img src="images/03.jpg" class="img-responsive">
+            </div>
+        </div>
+        <!-- Set up your HTML -->
+        <div class="container">
+            <div class="contain my=2">
+                <h2>
+                    最新消息
+                </h2>
+                <ol>
+                    <li>做好首頁囉</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
+        </div>
+</body>
+<script>
+    $(document).ready(function() {
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            center: true,
+            items: 1,
+            nav: true,
+            navElement: 'div',
+            navText: ['<i class="fa fa-angle-left">', '<i class="fa fa-angle-right">'],
+            loop: true,
+            margin: 10,
+            mouseDrag: true,
+            autoplay: true,
+            autoplayTimeout: 2500,
+            autoplayHoverPause: true,
+            transitionStyle: true,
+
+        });
+    });
+</script>
+
+</html>

@@ -13,6 +13,7 @@
             }
         </style>
         <script>
+             
             $('document').ready(function() {
                 $('#addBtn').onclick(function() {
                     $('#team-area').append(
@@ -43,6 +44,7 @@
             }
 
             function update() {
+                
                 confirm("已更新隊員名單!");
             }
         </script>
@@ -50,11 +52,12 @@
 </head>
 
 <body>
+    
     <% include navbar.ejs %>
 
         <div class="container">
             <div class="content mt-4 px-10">
-
+                <% console.log('hahaha3'); %>
                 <div class="header">
                     <h1>隊員清單</h1>
                     <button class="btn btn btn-secondary" id="backBtn" onclick="back()">返回</button>

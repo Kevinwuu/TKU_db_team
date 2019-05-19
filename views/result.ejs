@@ -34,6 +34,7 @@
             }
 
             function showDetail(id) {
+                console.log('hahaha0');
                 window.location.href = "/result/detail?t_id=" + id;
             }
         </script>
@@ -106,7 +107,7 @@
                                 <td class="align-middle">
                                     <button class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="showDetail('<%= data[i].t_id  %>')">Detail
                             </button>
-                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="del('<%= data[i].t_id %>')">
+                                    <button type="button" class="close" onclick="del('<%= data[i].t_id %>')">
                                 Delete
                             </button>
                                 </td>

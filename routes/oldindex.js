@@ -3,10 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', {
+    res.render('oldindex', {
         title: '排球盃線上報名系統'
     });
 });
+
 
 
 module.exports = router;

@@ -21,7 +21,7 @@ exports.getResults = async(req, res, next) => {
     //     })
     //     .catch(err => console.log(err));
 
-    res.render('result', {
+    res.render('products', {
         data: result,
         // member: member,
         title: '排球盃線上報名系統'
@@ -32,7 +32,7 @@ exports.getResults = async(req, res, next) => {
 exports.getSearch = (req, res, next) => {
     Result.findById(req.query.name)
         .then(([rows]) => {
-            res.render('result', {
+            res.render('products', {
                 data: rows,
                 title: '排球盃線上報名系統'
             });
@@ -44,7 +44,7 @@ exports.getSearch = (req, res, next) => {
 exports.postResults = (req, res, next) => {
     Result.addTeam(req)
         .then(([rows]) => {
-            res.redirect('/result');
+            res.redirect('/products');
         })
         .catch(err => console.log(err));
 };
@@ -64,15 +64,15 @@ exports.getDetail = async(req, res, next) => {
     //拿到所有為參加任何隊伍的會員,放入下拉選單
     const getCombo = await Result.fetchCombo()
         .then(([rows]) => {
-            console.log('hahaha1.5');
+            console.log('hahha2');
             console.log(rows);
-            console.log('hahaha2');
+
             cb_data = rows;
         })
         .catch(err => console.log(err));
 
 
-    res.render('detail', {
+    res.render('member', {
         data: member,
         cb_data: cb_data,
         title: '排球盃線上報名系統'
@@ -83,7 +83,7 @@ exports.getDetail = async(req, res, next) => {
 exports.postMember = (req, res, next) => {
     Result.addMember(req.query.t_id)
         .then(([rows]) => {
-            res.render('result', {
+            res.render('products', {
                 data: rows,
                 title: '排球盃線上報名系統'
             });
@@ -94,7 +94,7 @@ exports.postMember = (req, res, next) => {
 exports.delMember = (req, res, next) => {
     Result.delMember(req.query.m_id)
         .then(([rows]) => {
-            res.redirect('/result');
+            res.redirect('/products');
         })
         .catch(err => console.log(err));
 };
@@ -102,7 +102,7 @@ exports.delMember = (req, res, next) => {
 exports.delTeam = (req, res, next) => {
     Result.delTeam(req.query.t_id)
         .then(([rows]) => {
-            res.redirect('/result');
+            res.redirect('/products');
         })
         .catch(err => console.log(err));
 };
